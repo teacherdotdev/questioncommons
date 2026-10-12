@@ -5,7 +5,7 @@
     "": {
       "name": "questioncommons",
       "devDependencies": {
-        "@teacherdotdev/question-commons": "0.2.0",
+        "@teacherdotdev/question-commons": "0.3.0",
         "vite": "^8",
       },
     },
@@ -45,7 +45,7 @@
 
     "@rolldown/pluginutils": ["@rolldown/pluginutils@1.0.1", "", {}, "sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw=="],
 
-    "@teacherdotdev/question-commons": ["@teacherdotdev/question-commons@0.2.0", "", { "dependencies": { "jszip": "^3.10.1" } }, "sha512-k3/QG7aPmezyBI4kbo7I00rJSBm6ThSThqsCi6ApJ4RvJH/QTi7nIYvVdhW/vFNpj8xK7kJjdDUokk5+z6KYNg=="],
+    "@teacherdotdev/question-commons": ["@teacherdotdev/question-commons@0.3.0", "", { "dependencies": { "jszip": "^3.10.1", "unpdf": "1.8.1" } }, "sha512-Ptg9E8yNLTwmTojpwxuopb9DVegspnsc0VIDSwvzG0WjVYva9BWKcdJt4UJYFCQB6mkQN07ujInwYAj8E9ms2g=="],
 
     "core-util-is": ["core-util-is@1.0.3", "", {}, "sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ=="],
 
@@ -114,6 +114,8 @@
     "string_decoder": ["string_decoder@1.1.1", "", { "dependencies": { "safe-buffer": "~5.1.0" } }, "sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg=="],
 
     "tinyglobby": ["tinyglobby@0.2.17", "", { "dependencies": { "fdir": "^6.5.0", "picomatch": "^4.0.4" } }, "sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g=="],
+
+    "unpdf": ["unpdf@1.8.1", "", { "peerDependencies": { "@napi-rs/canvas": "^0.1.69 || ^1.0.0" }, "optionalPeers": ["@napi-rs/canvas"] }, "sha512-xkURhy2SoGpOIH0a1gLHNkASPIQYonadDJs2AQwPEfUakafeD9EA1WTWWsaR++gfTCXJpV27W7tU1nXuk82UKQ=="],
 
     "util-deprecate": ["util-deprecate@1.0.2", "", {}, "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="],
 

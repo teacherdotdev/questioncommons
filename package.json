@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@teacherdotdev/question-commons": "0.2.0",
+    "@teacherdotdev/question-commons": "0.3.0",
     "vite": "^8"
   }
 }

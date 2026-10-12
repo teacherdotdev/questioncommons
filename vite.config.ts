@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 
 // The Formats section is written from the package's own catalogue at build
 // time, so the site always lists exactly what the published package reads.
-const SHAPES: [Shape, string][] = [['table', 'Tables'], ['text', 'Text'], ['xml', 'XML files'], ['package', 'Packages']]
+const SHAPES: [Shape, string][] = [['table', 'Tables'], ['text', 'Text'], ['xml', 'XML files'], ['package', 'Packages'], ['pdf', 'PDFs']]
 
 const escape = (text: string) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;')
 
