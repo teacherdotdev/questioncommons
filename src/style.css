@@ -191,7 +191,7 @@ h3 {
 
 .columns {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 32px;
   margin-top: 40px;
 }
@@ -205,6 +205,12 @@ h3 {
 
 .columns li {
   padding: 4px 0;
+}
+
+.types {
+  display: block;
+  color: var(--faint);
+  font: 12px var(--mono);
 }
 
 .principles {
