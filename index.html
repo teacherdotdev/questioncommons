@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question Commons — every question bank, one open spec</title>
+    <meta
+      name="description"
+      content="Question Commons reads question files from Canvas, Moodle, Blackboard, Kahoot, Blooket, Quizlet and more into one open, versioned Question Bank format. Rules, not AI. Nothing changed."
+    />
+    <meta property="og:title" content="Question Commons" />
+    <meta property="og:description" content="Every question bank format, read into one open spec." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="/" aria-label="Question Commons home">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" /><path d="M11 9H8v14h3M21 9h3v14h-3" /><circle cx="16" cy="16" r="2.6" /></svg>
+          <span>Question Commons</span>
+        </a>
+        <nav class="links" aria-label="Sections">
+          <a href="#formats">Formats</a>
+          <a href="#principles">Principles</a>
+          <a href="#spec">Spec</a>
+          <a href="https://github.com/teacherdotdev/question-commons">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap">
+          <p class="eyebrow"><span class="dot"></span> v0.1 · in development · Apache-2.0</p>
+          <h1>Every question bank.<br /><span class="accent">One open spec.</span></h1>
+          <p class="lede">
+            Teachers' questions are scattered across Canvas, Moodle, Blackboard, Kahoot, Blooket and Quizlet, each in its own
+            file format. Question Commons reads all of them into one unified, versioned Question Bank, so any tool can take a
+            teacher's questions in.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#spec">Read the spec</a>
+            <button class="install" type="button" data-copy="npm install @question-commons/parser" aria-label="Copy the install command">
+              <span class="prompt">$</span> npm install @question-commons/parser <span class="copy" aria-hidden="true">copy</span>
+            </button>
+          </div>
+
+          <div class="window" aria-label="A Moodle GIFT file and the Question Bank it is read into">
+            <div class="pane">
+              <div class="pane-bar"><span>biology.gift</span><span class="tag">Moodle GIFT</span></div>
+<pre><code><span class="c">// one question, as a teacher wrote it</span>
+<span class="k">::Q1::</span> Which gas do plants take in? {
+  <span class="g">=carbon dioxide</span>
+  <span class="r">~oxygen</span>
+  <span class="r">~nitrogen</span>
+  <span class="c">####Plants use CO2 to make sugar.</span>
+}</code></pre>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+            <div class="pane">
+              <div class="pane-bar"><span>readQuestionFile()</span><span class="tag">question-bank 1.0.0</span></div>
+<pre><code>{
+  <span class="k">"format"</span>: <span class="s">"question-commons/question-bank"</span>,
+  <span class="k">"name"</span>: <span class="s">"biology"</span>,
+  <span class="k">"provenance"</span>: { <span class="k">"format"</span>: <span class="s">"gift"</span>, <span class="k">"fileName"</span>: <span class="s">"biology.gift"</span> },
+  <span class="k">"questions"</span>: [{
+    <span class="k">"type"</span>: <span class="s">"multiple-choice"</span>,
+    <span class="k">"stem"</span>: <span class="c">/* Which gas do plants take in? */</span>,
+    <span class="k">"choices"</span>: [
+      { <span class="k">"content"</span>: <span class="c">/* carbon dioxide */</span>, <span class="k">"correct"</span>: <span class="b">true</span> },
+      { <span class="k">"content"</span>: <span class="c">/* oxygen */</span>, <span class="k">"correct"</span>: <span class="b">false</span> },
+      <span class="c">…</span>
+    ],
+    <span class="k">"explanation"</span>: <span class="c">/* Plants use CO2 to make sugar. */</span>,
+    <span class="k">"provenance"</span>: { <span class="k">"line"</span>: <span class="n">1</span>, <span class="k">"number"</span>: <span class="n">1</span> }
+  }]
+}</code></pre>
+            </div>
+          </div>
+          <p class="footnote">Rich text is shortened here: stems, choices and explanations are structured rich text, with math kept as LaTeX.</p>
+        </div>
+      </section>
+
+      <section id="formats" class="section">
+        <div class="wrap">
+          <h2>Reads the files teachers already have</h2>
+          <p class="section-lede">
+            17 formats today. Each is recognised by its own markers and read by its own parser, and a file can always be read as
+            another format instead.
+          </p>
+          <div class="format-groups">
+            <div class="group">
+              <h3>Learning platforms</h3>
+              <ul>
+                <li>Canvas <small>QTI export</small></li>
+                <li>Moodle <small>XML · GIFT · Aiken</small></li>
+                <li>Blackboard <small>pools · test exports · upload files</small></li>
+                <li>Brightspace (D2L) <small>question CSV</small></li>
+                <li>QTI <small>1.2 · 2.x · 3.0</small></li>
+              </ul>
+            </div>
+            <div class="group">
+              <h3>Classroom games</h3>
+              <ul>
+                <li>Kahoot <small>spreadsheet template</small></li>
+                <li>Blooket <small>spreadsheet template</small></li>
+                <li>Class Gauntlet <small>question sets</small></li>
+                <li>Quizlet &amp; Anki <small>flashcards</small></li>
+              </ul>
+            </div>
+            <div class="group">
+              <h3>Test makers &amp; text</h3>
+              <ul>
+                <li>Respondus <small>text · CSV</small></li>
+                <li>Blackboard Test Generator <small>text</small></li>
+                <li>text2qti <small>Markdown</small></li>
+                <li>Spreadsheets <small>CSV · Excel, by their headers</small></li>
+                <li>Word <small>any of the text formats in a .docx</small></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="principles" class="section">
+        <div class="wrap">
+          <h2>Principles</h2>
+          <p class="section-lede">A teacher's question is their work. The parser's job is to carry it, not reinterpret it.</p>
+          <div class="cards">
+            <article class="card">
+              <h3>Never changes a question</h3>
+              <p>
+                A question comes in exactly as its file meant it, or it's left out with an Import Issue that says where and why.
+                Nothing is quietly turned into something else to make it fit.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Keeps every question type</h3>
+              <p>
+                Multiple choice, multiple answer, true/false, matching, fill in the blank, short answer, numeric and ordering. Each
+                app decides what it can use; the spec never throws anything away for it.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Rules, not AI</h3>
+              <p>
+                Every format is read with fixed rules. The same file always gives the same result, nothing is sent anywhere, and it
+                runs in the browser, Node or Bun.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Says where it came from</h3>
+              <p>
+                Every bank records the format and file it was read from, and every question its line and place in that file, so
+                anyone can trace it back.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="spec" class="section">
+        <div class="wrap spec">
+          <div>
+            <h2>The spec</h2>
+            <p class="section-lede">
+              A Question Bank is plain JSON: a name, its questions, and where they came from. It's described by a versioned JSON
+              Schema, and every bank names the version it follows.
+            </p>
+            <dl class="facts">
+              <div><dt>Schema</dt><dd><a href="/schema/question-bank-1.0.0.schema.json"><code>/schema/question-bank-1.0.0.schema.json</code></a></dd></div>
+              <div><dt>Version</dt><dd><code>1.0.0</code>, bumped in its major part only for a breaking change</dd></div>
+              <div><dt>Pictures</dt><dd>carried as the file had them, beside the banks, named from rich text</dd></div>
+              <div><dt>Extras</dt><dd>facts only one tool's files carry, kept by name and never acted on</dd></div>
+            </dl>
+          </div>
+          <div class="pane code">
+            <div class="pane-bar"><span>app.ts</span><span class="tag">TypeScript</span></div>
+<pre><code><span class="k">import</span> { readQuestionFile, plainText } <span class="k">from</span> <span class="s">'@question-commons/parser'</span>
+
+<span class="k">const</span> file = input.files[<span class="n">0</span>]
+<span class="k">const</span> reading = <span class="k">await</span> readQuestionFile({
+  name: file.name,
+  bytes: <span class="k">new</span> Uint8Array(<span class="k">await</span> file.arrayBuffer()),
+})
+
+reading.format     <span class="c">// 'kahoot'</span>
+reading.banks      <span class="c">// QuestionBank[]</span>
+reading.pictures   <span class="c">// { [key]: { bytes, mimeType } }</span>
+reading.candidates <span class="c">// other formats it could be read as</span>
+
+<span class="k">for</span> (<span class="k">const</span> issue <span class="k">of</span> reading.issues) {
+  <span class="c">// what was left out, where, and why</span>
+  console.log(issue.code, issue.line, issue.message)
+}</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <p>Question Commons is open source under Apache-2.0, built by <a href="https://teacher.dev">teacher.dev</a>.</p>
+        <p class="muted">Used by Test Parrot and Class Gauntlet.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
